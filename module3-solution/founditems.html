@@ -1,0 +1,18 @@
+﻿<div>
+    <table class="table">
+        <tr ng-repeat="eachItem in list.foundItems track by eachItem.id">
+            <td>
+                {{eachItem.short_name}}
+            </td>
+            <td>
+                {{eachItem.description}}
+            </td>
+            <td>
+                <input type='button' 
+                       value="Don't want this one!" 
+                       ng-click="list.onRemove({index : $index});"
+                        class="btn btn-primary" />
+            </td>
+        </tr>
+    </table>
+</div>
