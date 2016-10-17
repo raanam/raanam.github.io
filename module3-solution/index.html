@@ -17,7 +17,14 @@
         <div class="form-group narrow-button">
             <button class="btn btn-primary" ng-click="ctrl.search()">Narrow It Down For Me!</button>
         </div>
-        <loader ng-show="ctrl.loadingData"></loader>
+        <div style="clear:both">
+            <loader ng-show="ctrl.loadingData"></loader>
+            <div ng-show="ctrl.emptyResults" class="text-danger">
+                Nothing found
+            </div>
+        </div>
+        
+        
         <!-- found-items should be implemented as a component -->
         <div class="form-group" style="clear:both">
             <found-items found-items="ctrl.found"

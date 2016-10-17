@@ -9,17 +9,29 @@ var app = angular.module('NarrowItDownApp', []);
         ctrl.searchTerm = '';
         ctrl.found = [];
         ctrl.loadingData = false;
+        ctrl.emptyResults = false;
 
         ctrl.removeItem = function (index) {
             ctrl.found.splice(index, 1);
         };
 
         ctrl.search = function () {
+            if (ctrl.searchTerm == '') {
+                ctrl.emptyResults = true;
+                ctrl.found = [];
+                return;
+            }
             ctrl.loadingData = true;
             var promise = menuSearchSvc.getMatchedMenuItems(ctrl.searchTerm);
             promise.then(function (items) {
                 ctrl.loadingData = false;
-                ctrl.found = items;
+                if (items == null || items.length == 0) {
+                    ctrl.emptyResults = true;
+                    ctrl.found = [];
+                } else {
+                    ctrl.emptyResults = false;
+                    ctrl.found = items;
+                }
             }, function (err) {
                 ctrl.loadingData = false;
             });
