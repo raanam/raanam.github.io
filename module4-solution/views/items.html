@@ -1,0 +1,18 @@
+﻿<div>
+    <h1>Items in category - {{ ctrl.category.name }}</h1>
+
+    <table style="position:relative" class="table table-bordered">
+        <tr>
+            <td>
+                <items items="ctrl.items.menu_items"
+                       category-short-name="ctrl.category.short_name">
+                </items>
+            </td>
+            <td>
+                <ui-view></ui-view>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
