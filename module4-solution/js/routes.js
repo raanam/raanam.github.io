@@ -11,13 +11,13 @@
 
         $stateProvider.state('home', {
             url: '/',
-            templateUrl: '/views/home.html',
+            templateUrl: 'views/home.html',
             controller: 'HomeController as ctrl'
         });
 
         $stateProvider.state('categories', {
             url: '/categories',
-            templateUrl: '/views/categories.html',
+            templateUrl: 'views/categories.html',
             controller: 'CategoriesController as ctrl',
             resolve: {
                 items: ['MenuDataService', function (menuDataService) {
@@ -28,7 +28,7 @@
 
         $stateProvider.state('items', {
             url: '/categories/{categoryShortName}/items',
-            templateUrl: '/views/items.html',
+            templateUrl: 'views/items.html',
             controller: 'ItemsController as ctrl',
             resolve: {
                 items: ['$stateParams', 'MenuDataService', function ($stateParams, menuDataService) {
